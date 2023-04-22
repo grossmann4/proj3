@@ -4,9 +4,13 @@ from bson.objectid import ObjectId # For ObjectId to work
 from bson.errors import InvalidId # For catching InvalidId exception for ObjectId
 import os
 
-mongodb_host = os.environ.get('MONGO_HOST', 'localhost')
-mongodb_port = int(os.environ.get('MONGO_PORT', '27017'))
-client = MongoClient(mongodb_host, mongodb_port)    #Configure the connection to the database
+# mongodb_host = os.environ.get('MONGO_HOST', 'localhost')
+# mongodb_port = int(os.environ.get('MONGO_PORT', '27017'))
+client = MongoClient(host='test_mongodb',
+		     		port=27017,
+					username='root',
+					password='CS6998',
+					authSource='admin')    #Configure the connection to the database
 db = client.camp2016    #Select the database
 todos = db.todo #Select the collection
 
@@ -124,7 +128,7 @@ def about():
 	return render_template('credits.html',t=title,h=heading)
 
 if __name__ == "__main__":
-	env = os.environ.get('FLASK_ENV', 'development')
-	port = int(os.environ.get('PORT', 5000))
+	# env = os.environ.get('FLASK_ENV', 'development')
+	# port = int(os.environ.get('PORT', 5000))
 	app.run()
 	# Careful with the debug mode..

@@ -2,16 +2,17 @@ services:
   web:
     image: cloudapp
     ports: 
-      - "8000:5000"
-    environment:
-      MONGODB_USERNAME: "root"
-      MONGODB_PASSWORD: "CS6998"
-    depends_on:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    links:
       - db
   
   db:
     image: mongo
+    hostname: test_mongodb
     environment:
+      - MONGO_INIT_DB_DATABSE=camp2016
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=CS6998
     ports:
