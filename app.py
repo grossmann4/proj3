@@ -15,6 +15,10 @@ title = "TODO with Flask"
 heading = "ToDo Reminder"
 #modify=ObjectId()
 
+# @app.route('/')
+# def index():
+#     return 'Hello to Flask!'
+ 
 def redirect_url():
 	return request.args.get('next') or \
 		request.referrer or \
@@ -122,7 +126,5 @@ def about():
 if __name__ == "__main__":
 	env = os.environ.get('FLASK_ENV', 'development')
 	port = int(os.environ.get('PORT', 5000))
-	debug = False if env == 'production' else True
-	app.run(debug=True)
-	app.run(port=port, debug=debug)
+	app.run()
 	# Careful with the debug mode..
