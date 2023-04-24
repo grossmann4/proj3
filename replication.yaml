@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: cloudapp
+spec:
+  replicas: 3
+  selector:
+    app: cloudapp
+  template:
+    metadata:
+      name: cloudapp
+      labels:
+        app: cloudapp
+    spec:
+      containers:
+      - name: rg3398/cloudapp
+        image: rg3398/cloudapp
+        ports:
+        - containerPort: 5000
+        

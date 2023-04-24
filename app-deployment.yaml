@@ -6,7 +6,7 @@ metadata:
     app: cloudapp
 
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: cloudapp
@@ -16,10 +16,8 @@ spec:
         app: cloudapp
     spec:
       containers:
-      - image: rg3398/cloudapp
-        name: cloudapp
+      - name: cloudapp
+        image: rg3398/cloudapp
         ports:
-        - containerPort: 5000
-        resources: {}
-      restartPolicy: Always
-status: {}
+          - containerPort: 5000
+        imagePullPolicy: Always

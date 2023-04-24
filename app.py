@@ -6,7 +6,7 @@ import os
 
 # mongodb_host = os.environ.get('MONGO_HOST', 'localhost')
 # mongodb_port = int(os.environ.get('MONGO_PORT', '27017'))
-client = MongoClient(host='test_mongodb',
+client = MongoClient(host='mongo',
 		     		port=27017,
 					username='root',
 					password='CS6998',
