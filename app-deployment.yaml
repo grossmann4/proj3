@@ -7,6 +7,9 @@ metadata:
 
 spec:
   replicas: 1
+  strategy:
+  type: RollingUpdate
+    maxUnavailable: 2
   selector:
     matchLabels:
       app: cloudapp
@@ -20,4 +23,16 @@ spec:
         image: rg3398/cloudapp
         ports:
           - containerPort: 5000
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /live
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 10
         imagePullPolicy: Always

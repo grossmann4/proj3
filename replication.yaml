@@ -3,7 +3,7 @@ kind: ReplicationController
 metadata:
   name: cloudapp
 spec:
-  replicas: 3
+  replicas: 4
   selector:
     app: cloudapp
   template:
@@ -13,7 +13,7 @@ spec:
         app: cloudapp
     spec:
       containers:
-      - name: rg3398/cloudapp
+      - name: cloudapp
         image: rg3398/cloudapp
         ports:
         - containerPort: 5000
